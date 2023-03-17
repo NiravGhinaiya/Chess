@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+}
+
+.App {
+    height: 100vh;
+    background-color: black;
+    display: grid;
+    place-content: center;
+}
+
+.chessbord {
+
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    grid-template-rows: repeat(8, 100px);
+    height: 800px;
+    width: 800px;
+    border: 5px solid gray;
+    background-color: pink;
+    color: red;
+
+    .chess_tile {
+
+        border: 1px solid white;
+        height: 100px;
+        width: 100px;
+
+    }
+
+    .white_tile {
+        background-color: #DEB886;
+        // background-color: white;
+    }
+
+    .black_tile {
+        background-color: #5A3828;
+        // background-color: black;
+    }
+}

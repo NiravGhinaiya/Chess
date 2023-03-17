@@ -1,0 +1,40 @@
+.not_found {
+    display: $d_flex;
+    min-height: 100vh;
+
+    .not_found_content {
+        // background-image: url(../image/not_found.png);
+        background-position: $background_position_center;
+        background-repeat: $background_repeat_no_repeat;
+        background-attachment: $background_attachment_fixed;
+        background-size: $background_size_cover;
+        width: $w_100;
+
+        h1 {
+            font-size: $f130;
+            margin-top: 12rem;
+            text-align: $text_center;
+            line-height: $line_height_15;
+            color: $white;
+            font-family: 'Poppins-SemiBold', sans-serif;
+
+            @media (max-width:$ipad) {
+                font-size: $f50;
+                line-height: $line_height_100;
+            }
+        }
+
+        p {
+            font-size: $f37;
+            line-height: $line_height_48;
+            color: $white;
+            width: $w_100;
+            font-family: 'Poppins-Medium', sans-serif;
+            max-width: 560px;
+            margin: 39px auto 13px auto;
+            text-align: $text_center;
+        }
+
+
+    }
+}

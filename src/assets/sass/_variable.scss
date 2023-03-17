@@ -1,0 +1,206 @@
+:root {
+    // font family
+    --font-OpenSans: OpenSans-Regular, sans-serif;
+    --font-Raleway: Raleway-Regular, sans-serif;
+}
+
+//color name
+$white: #ffffff;
+$black: #000000;
+$gray_color: #999;
+$blue_color: #551a8b;
+$orange: #fc591d;
+$crim :#fed5c6;
+$dark: #131313;
+$light_dark: #1a1a1a;
+$darker: #2a2b2b;
+$lighter_dark: #2b2d2e;
+$calender_dark: #1F1F1F;
+$darke: #3f3f3f;
+$lighte: #2b2c2f;
+$lighter_white: #ccc;
+$blue: #2196F3;
+$orange_color: #ff7d00;
+$light_gray: #8798ad;
+$graph_line_col: #ebedf23b;
+$dark_color: #1F1F1F;
+$border_color:#434343;
+$orange_col: #FA8C16;
+$cancel_btn_col: #212529;
+$dark_colo: #141414;
+$darker_color:#1E1E1E;
+$lighter: #D9D9D9;
+$lighter_green: rgba(0, 128, 0, 0.267);
+$light_green: rgb(129, 228, 129);
+$dark_red: rgba(255, 0, 0, 0.267);
+$light_orange: rgb(255, 86, 86);
+$dark_grey: rgb(113 106 202 / 10%);
+$tooltip_background: #424242;
+
+//media query
+$smallMobile: 325px;
+$mobileSmall: 375px;
+$mobile: 479px;
+$mobileLarge: 576px;
+$mobile_small: 521px;
+$large_mobile: 681px;
+$ipad: 768px;
+$large: 991px;
+$medium_ipad: 730px;
+$small_ipad: 621px;
+$larges: 992px;
+$extraLarge: 1024px;
+$desktop: 1366px;
+$desktop_view: 1401px;
+$desktop_large: 1665px;
+$flex_grow_1: 1;
+
+// Positions
+$position_fixed: fixed;
+$position_relative: relative;
+$position_absolute: absolute;
+$position_sticky: sticky;
+
+// Text
+$text_left: left;
+$text_center: center;
+$text_right :right;
+$text_uppercase: uppercase;
+$text_lowercase: lowercase;
+$text_capitalize: capitalize;
+$text_decoration_none: none;
+$text_underline: underline;
+
+
+//  Properties
+$d_block: block;
+$d_inline_block: inline-block;
+$d_none: none;
+$d_flex: flex;
+$d_inline_flex: inline-flex;
+
+
+//align item
+$align_items_center : center;
+$align_items_end: flex-end;
+$align_items_start: flex-start;
+$align_items_baseline: baseline;
+
+
+//justify
+$justify_content_center: center;
+$justify_content_between: space-between;
+$justify_content_around: space-around;
+$justify_content_evenly: space-evenly;
+$justify_content_start: flex-start;
+$justify_content_end: flex-end;
+$flex_direction_column: column;
+$nowrap: nowrap;
+$flex_wrap: wrap;
+$word_break: break-all;
+$white_space_nowrap: nowrap;
+$white_space_wrap: normal;
+
+//cursor-pointer
+$cursor_pointer: pointer;
+
+// Radius
+$radius_0: 0;
+$radius_15: 15px;
+$radius_25: 25px;
+$radius_50: 50%;
+$radius_18: 18px;
+$radius_100: 100%;
+$radius_6: 6px;
+$radius_10 :10px;
+
+//font size
+$f9: 9px;
+$f10: 10px;
+$f12: 12px;
+$f13: 13px;
+$f14: 14px;
+$f16: 16px;
+$f18: 18px;
+$f15: 15px;
+$f20: 20px;
+$f22: 22px;
+$f24: 24px;
+$f30:30px;
+$f37: 37px;
+$f50: 50px;
+$f130: 130px;
+
+//line-height
+$line_height_15: 15px;
+$line_height_22: 22px;
+$line_height_24: 24px;
+$line_height_30: 30px;
+$line_height_48: 48px;
+$line_height_100: 100px;
+$line_height_80_p: 80%;
+$line_height_100_p: 100%;
+$line_height_140_p: 140%;
+
+//fonnt-weight
+$bold: 700;
+$medium: 500;
+$semi_bold: 600;
+$extra_bold: 800;
+$black_weight: 900;
+$regular: 400;
+
+//border-radius
+
+$border_radius_2: 2px;
+$border_radius_3: 3px;
+$border_radius_4: 4px;
+$border_radius_7: 7px;
+$border_radius_5: 5px;
+
+//opacity
+
+$opacity_0_5: 0.5;
+$opacity_1: 1;
+
+//background
+$background_position_center: center;
+$background_repeat_no_repeat: no-repeat;
+$background_attachment_fixed: fixed;
+$background_size_cover: cover;
+$background-size_100: 100%;
+
+//width
+$w_100 :100%;
+$w_400 :400px;
+$w_1200 : 1200px;
+$w_878 :878px;
+$w_600: 600px;
+$w_1024: 1024px;
+$w_751: 751px;
+$w_480: 480px;
+$w_450: 450px;
+$w_375 :375px;
+$w_300: 300px;
+$w_1175: 1175px;
+$w_255: 255px;
+$w_305: 305px;
+$w_100p: 100px;
+//height
+$h_100: 100%;
+$h_36: 36px;
+//margin
+$m_auto: 0 auto;
+
+// chart variables
+
+$approvedFormFillToShowedConsultWidth:49.29%;
+$scheduleFirstChartWidth: 49.29%;
+$insuranceFirstChartWidth: 49.29%;
+$availableAppointmentGaugeChartWidth: 49.29%;
+$bookedAppointmentHeatMapChartWidth: 100%;
+$showedAppointmentHeatMapChartWidth: 100%;
+$insuranceReportFunnelChartWidth: 49.29%;
+$phoneFlowScheduleFirstChartWidth: 49.29%;
+$phoneFlowInsuranceFirstChartWidth: 49.29%;
+// var(--phoneFlowInsuranceFirstChartWidth: '49.29%');
