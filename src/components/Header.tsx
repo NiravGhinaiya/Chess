@@ -37,10 +37,10 @@ const Header = () => {
                                     <div className='icons-chees'>
                                         <ul>
                                             <li>
-                                                <img src={Image.userIcons} />
+                                                <img src={Image.userIcons} alt='userIcons' />
                                             </li>
                                             <li>
-                                                <img src={Image.searchIcon} />
+                                                <img src={Image.searchIcon} alt='searchIcon' />
                                             </li>
                                         </ul>
                                     </div>

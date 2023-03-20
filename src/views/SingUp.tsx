@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Socket } from 'socket.io-client'
 import Spinner from '../components/Spinner'
 import { socket } from '../socket/socket'
 
