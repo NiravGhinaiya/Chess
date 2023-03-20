@@ -11,8 +11,9 @@ export const PublicRouteList : PUBLICE_ROUTE_LIST[] = [
     // Home
     { path: "/", element: Dashboard, restricted: false, title: "Dashbord" },
     
-    { path: "/singup", element: SingUp, restricted: false, title: "SingUp" },
     // Error 404
-    { path: "*", element: Header, restricted: false, title: "404" },
-
+    { path: "*", element: Error404, restricted: false, title: "404" },
+    
+    { path: "/singup", element: SingUp, restricted: false, title: "SingUp" },
+    
 ]
