@@ -23,7 +23,7 @@ const Dashboard = () => {
                         delay: 3000,
                         disableOnInteraction: false,
                     }}
-                    modules={[EffectFade, Pagination,]}//Autoplay
+                    modules={[EffectFade, Pagination, Autoplay]}
                     navigation={true}
                     effect="fade"
                     className="mySwiper"
