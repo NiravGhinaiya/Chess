@@ -1,7 +1,11 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Kolker+Brush&family=Rock+Salt&display=swap');
+
+*,
+*::placeholder {
     margin: 0px;
-    // font-family: "Montserrat", sans-serif;
+    font-family: 'Baloo 2', cursive;
 }
+
 
 .App {
     height: 100vh;

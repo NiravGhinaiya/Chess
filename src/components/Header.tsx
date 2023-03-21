@@ -3,9 +3,26 @@ import { Image } from '../assets/image'
 
 const Header = () => {
     return (
-
+        <>
+        <div className='header-slide-content'>
+            <div className='header-slide-content-main'>
+                <div className='header-slide-content-icon'>
+                    <ul>
+                        <li>
+                            <img src={Image.userIcons} />
+                        </li>
+                        <li>
+                            <img src={Image.searchIcon} />
+                        </li>
+                    </ul>
+                </div>
+                <div className='header-button'>
+                    <a href='/' >Donate</a>
+                </div>
+            </div>
+        </div>
         <div className="header_absolute ">
-            <div className="page_header_wrapper" style={{ height: '101px',zIndex:'2' }}>
+            <div className="page_header_wrapper">
                 <header className="page_header">
                     <div className="page-header-contant">
                         <div className='main-tag-row'>
@@ -37,21 +54,24 @@ const Header = () => {
                                     <div className='icons-chees'>
                                         <ul>
                                             <li>
-                                                <img src={Image.userIcons} alt='userIcons' />
+                                                <img src={Image.userIcons} />
                                             </li>
                                             <li>
-                                                <img src={Image.searchIcon} alt='searchIcon' />
+                                                <img src={Image.searchIcon} />
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+                            </div>
+                            <div className='navigation-menu'>
+                                <img src={Image.navigation} alt='navigation' />
                             </div>
                         </div>
                     </div>
                 </header>
             </div>
         </div>
-
+    </>
     )
 }
 
