@@ -5,7 +5,7 @@ const Header = () => {
     return (
 
         <div className="header_absolute ">
-            <div className="page_header_wrapper" style={{ height: '101px' }}>
+            <div className="page_header_wrapper" style={{ height: '101px',zIndex:'2' }}>
                 <header className="page_header">
                     <div className="page-header-contant">
                         <div className='main-tag-row'>

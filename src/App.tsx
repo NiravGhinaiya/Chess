@@ -15,6 +15,15 @@ export default function App() {
 
   useEffect(() => {
 
+    document.documentElement.style.setProperty('--swiper-theme-color', '#e7c900');
+    document.documentElement.style.setProperty('--swiper-pagination-bullet-vertical-gap', '18px');
+    document.documentElement.style.setProperty('--swiper-pagination-bullet-border-radius', '10%');
+    document.documentElement.style.setProperty('--swiper-pagination-bullet-inactive-color', '#e7c900');
+    document.documentElement.style.setProperty('--swiper-pagination-bullet-width', '5px');
+    document.documentElement.style.setProperty('--swiper-pagination-right', '30px');
+    document.documentElement.style.setProperty('--swiper-pagination-bullet-height', '5px');
+    document.documentElement.style.setProperty('--chessapp-primer-color', '#e7c900');
+
     socket.on("connect", () => {
       console.log("connected", socket.connected, "ID", socket.id); // x8WIv7-mJelg7on_ALbx
     });
