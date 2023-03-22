@@ -15,14 +15,23 @@ const initialState: ArticleState = {
                 "Harum quidem rerum facilis est et expedita distinctio quas molestias excepturi sint",
         },
     ],
+    isLoginModalOpen: false
 }
+
+const showLoginModalHandler = (state: any, action: any) => {
+    const { isLoginModalOpen } = action;
+    return { ...state, isLoginModalOpen }
+}
+
 
 const reducer = (
     state: ArticleState = initialState,
-    action: ArticleAction
+    action: any
 ): ArticleState => {
     switch (action.type) {
+
         case actionTypes.ADD_ARTICLE:
+
             const newArticle: IArticle = {
                 id: Math.random(), // not really unique
                 title: action.article.title,
@@ -32,7 +41,9 @@ const reducer = (
                 ...state,
                 articles: state.articles.concat(newArticle),
             }
+
         case actionTypes.REMOVE_ARTICLE:
+
             const updatedArticles: IArticle[] = state.articles.filter(
                 article => article.id !== action.article.id
             )
@@ -40,8 +51,11 @@ const reducer = (
                 ...state,
                 articles: updatedArticles,
             }
+
+        case actionTypes.SHOW_LOGIN_MODAL: return showLoginModalHandler(state, action);
+
     }
-    return state
+    return state;
 }
 
 export default reducer

@@ -2,14 +2,19 @@ import { useEffect, useState } from 'react';
 import { Button, Modal, Form, Input } from 'antd';
 import { socket } from '../socket/socket'
 import { LOGIN_DATA } from '../interfaces/interFace';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from "redux"
+import { showLoginModal } from '../store/actionCreators';
 
 
 export default function SingUp(): JSX.Element {
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
-    const showModal = () => {
-        setIsModalOpen(true);
-    }
+    const dispatch: Dispatch<any> = useDispatch()
+    const state: ArticleState = useSelector((state: ArticleState) => state)
+
+    const { isLoginModalOpen } = state
+
+    console.log('SingUp', isLoginModalOpen);
 
     // const onFinish = (values) => {
     //     console.log('Success:', values);
@@ -20,11 +25,10 @@ export default function SingUp(): JSX.Element {
 
 
     useEffect(() => {
+
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container-login');
-
-
+        const container = document.getElementById('container');
 
         signUpButton?.addEventListener('click', () => {
             container?.classList.add("right-panel-active");
@@ -43,23 +47,23 @@ export default function SingUp(): JSX.Element {
         signUpContainer?.classList.add("create-acc");
         signInContainer?.classList.add("create-acc-op");
     }
+
     const clickLoginAcc = () => {
         const signUpContainer = document.getElementById('signUpContainer');
         const signInContainer = document.getElementById('signInContainer');
 
         signUpContainer?.classList.remove("create-acc");
         signInContainer?.classList.remove("create-acc-op");
-
     }
 
-const onFinishSingIn = (values: LOGIN_DATA) => {
-    console.log(values);
-}
+    const onFinishSingIn = (values: LOGIN_DATA) => {
+        console.log(values);
+    }
 
     return (
         <div className='main-login-wraper'>
-            <Modal closable={false} centered width={'768px'} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }} open={isModalOpen}>
-                <div className="container-login" id="container-login">
+            <Modal closable={false} open={isLoginModalOpen} onCancel={() => dispatch(showLoginModal(!isLoginModalOpen))} centered width={'768px'} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
+                <div className="container-login" id="container">
                     <div className="form-container sign-up-container" id='signUpContainer'>
                         <Form
                             name="basic"
@@ -181,7 +185,7 @@ const onFinishSingIn = (values: LOGIN_DATA) => {
                                     <Input.Password placeholder='Password' />
                                 </Form.Item>
                                 <Form.Item>
-                                    <a href="#" className='forgotPass'>Forgot your password?</a>
+                                    <a href="/" className='forgotPass'>Forgot your password?</a>
                                 </Form.Item>
                                 <Form.Item>
                                     <div className='form-button-content'>
@@ -206,7 +210,7 @@ const onFinishSingIn = (values: LOGIN_DATA) => {
                             <div className="overlay-panel overlay-right">
                                 <h1>Hello, Friend!</h1>
                                 <p>Enter your personal details and start journey with us</p>
-                                <button className="ghost" id="signUp">Sign Up</button>
+                                <button className="ghost" id="signUp" >Sign Up</button>
                             </div>
                         </div>
                     </div>

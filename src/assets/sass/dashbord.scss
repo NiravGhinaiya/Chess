@@ -39,6 +39,7 @@
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    overflow-x: hidden;
 
     .sub-container {
         position: absolute;
@@ -287,5 +288,121 @@ a {
     100% {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+
+.main-setting-wraper-open{
+    right: -210px !important;
+}
+
+
+.main-setting-wraper {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 50%;
+    display: flex;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+
+
+
+    .settingIcon {
+        width: 60px;
+        height: 60px;
+        background-color: #e7c900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 0;
+
+
+        img {
+            width: 24px;
+            height: 25px;
+        }
+
+
+    }
+
+
+    .switcher {
+        // background-color: #e7c900;
+        width: 210px;
+        height: 271px;
+        
+        color: #fff;
+        font-size: 15px;
+
+
+        .first-wraper {
+
+
+            h4 {
+                background-color: #efefef;
+                color: #1f232b;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 60px;
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+
+        .second-wraper {
+            padding: 20px 31px 20px 32px;
+            background-color: #031221;
+
+
+            p {
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 1;
+                margin: 0 0 10px;
+            }
+
+
+            ul {
+                list-style-type: none;
+                display: flex;
+
+
+                li {
+                    float: left;
+                    margin-bottom: 0;
+                    padding: 0 2px 5px 2px;
+
+
+                    button {
+                        display: inline-block;
+                        height: 40px;
+                        overflow: hidden;
+                        position: relative;
+                        width: 40px;
+                        border: 0;
+                        cursor: pointer;
+                    }
+
+
+                    .color1 {
+                        background-color: #e7c900;
+                    }
+
+
+                    .color2 {
+                        background-color: #75bd18;
+                    }
+
+
+                    .color3 {
+                        background-color: #0078e7;
+                    }
+                }
+            }
+        }
     }
 }

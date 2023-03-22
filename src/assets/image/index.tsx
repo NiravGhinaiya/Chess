@@ -6,6 +6,7 @@ import slide01 from './slide01.jpg'
 import slide02 from './slide02.jpg'
 import slide03 from './slide03.jpg'
 import navigation from './navigation.png'
+import settingIcon from './settingIcon.png'
 
 export const Image = {
     Error404,
@@ -16,4 +17,5 @@ export const Image = {
     slide02,
     slide03,
     navigation,
+    settingIcon,
 };

@@ -20,7 +20,7 @@ export default function App() {
     document.documentElement.style.setProperty('--swiper-pagination-bullet-border-radius', '10%');
     document.documentElement.style.setProperty('--swiper-pagination-bullet-inactive-color', '#e7c900');
     document.documentElement.style.setProperty('--swiper-pagination-bullet-width', '5px');
-    document.documentElement.style.setProperty('--swiper-pagination-right', '30px');
+    document.documentElement.style.setProperty('--swiper-pagination-right', '80px');
     document.documentElement.style.setProperty('--swiper-pagination-bullet-height', '5px');
     document.documentElement.style.setProperty('--chessapp-primer-color', '#e7c900');
 

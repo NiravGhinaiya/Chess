@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import Layout from './Layout'
 import "swiper/css";
@@ -11,8 +11,20 @@ const Dashboard = () => {
 
     const backGroundImage = [Image.slide01, Image.slide02, Image.slide03]
 
+    const [toggle, setToggle] = useState(false)
+
+
+    const clickSettingOpenClose = () => {
+        setToggle(!toggle)
+    }
+
+
+    const handleClick = (data: string) => {
+        console.log('sdfghjk', data)
+    }
+
     return (
-        <Layout >
+        <Layout>
             <div className='container'>
                 <Swiper
                     direction={"vertical"}
@@ -69,7 +81,25 @@ const Dashboard = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <div className={toggle ? 'main-setting-wraper' : 'main-setting-wraper main-setting-wraper-open'} id='mainSettingWraper'>
+                <button className='settingIcon' onClick={clickSettingOpenClose}>
+                    <img src={Image.settingIcon} alt='settingIcon' />
+                </button>
+                <div className={toggle ? "switcher" : "switcher "}>
+                    <div className='first-wraper'>
+                        <h4>Styles Selector</h4>
+                    </div>
+                    <div className='second-wraper'>
+                        <p>Accent color:</p>
+                        <ul>
+                            <li><button className="color1" onClick={() => handleClick('color1')}></button></li>
+                            <li><button className="color2" onClick={() => handleClick('color2')}></button></li>
+                            <li><button className="color3" onClick={() => handleClick('color3')}></button></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            </div>  
         </Layout>
     )
 }

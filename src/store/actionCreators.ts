@@ -10,6 +10,11 @@ export const removeArticle = (article: IArticle) => ({
     article,
 })
 
+export const showLoginModal = (isLoginModalOpen: boolean) => ({
+    type: actionTypes.SHOW_LOGIN_MODAL,
+    isLoginModalOpen,
+})
+
 // export function simulateHttpRequest(action: ArticleAction) {
 //     return (dispatch: DispatchType) => {
 //         dispatch(action)

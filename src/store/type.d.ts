@@ -5,7 +5,8 @@ interface IArticle {
   }
   
   type ArticleState = {
-    articles: IArticle[]
+    articles: IArticle[],
+    isLoginModalOpen: boolean,
   }
   
   type ArticleAction = {
