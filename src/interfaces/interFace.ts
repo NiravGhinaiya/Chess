@@ -20,3 +20,12 @@ export interface PUBLICE_ROUTE {
     title: string,
     restricted: boolean
 }
+
+export interface LOGIN_DATA {
+    email:string,
+    password:string,
+}
+// export interface SINGUP_DATA {
+//     email:string,
+//     password:string,
+// }
