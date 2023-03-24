@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes"
+import { v4 as uuid } from 'uuid';
 
 const initialState: ArticleState = {
     articles: [
@@ -15,14 +16,29 @@ const initialState: ArticleState = {
                 "Harum quidem rerum facilis est et expedita distinctio quas molestias excepturi sint",
         },
     ],
-    isLoginModalOpen: false
+    isLoginModalOpen: false,
+    user: null,
 }
 
-const showLoginModalHandler = (state: any, action: any) => {
+const showLoginModalHandler = (state: ArticleState, action: any) => {
     const { isLoginModalOpen } = action;
     return { ...state, isLoginModalOpen }
 }
 
+const addUserDetailsHandler = (state: ArticleState, action: any) => {
+
+    const id: string = uuid();
+    const { values } = action;
+    let user = {
+        ...values,
+        userId: id,
+        token: "abc2",
+        entryFee: 100,
+        chips: 50000,
+        userProfile: 'asd.jpg',
+    }
+    return { ...state, user, isLoginModalOpen: !state.isLoginModalOpen}
+}
 
 const reducer = (
     state: ArticleState = initialState,
@@ -53,6 +69,7 @@ const reducer = (
             }
 
         case actionTypes.SHOW_LOGIN_MODAL: return showLoginModalHandler(state, action);
+        case actionTypes.ADD_USER_DETAILS: return addUserDetailsHandler(state, action);
 
     }
     return state;

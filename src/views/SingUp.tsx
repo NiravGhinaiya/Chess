@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Button, Modal, Form, Input } from 'antd';
-import { socket } from '../socket/socket'
-import { LOGIN_DATA } from '../interfaces/interFace';
+import { LOGIN_DATA, SINGUP_DATA } from '../interfaces/interFace';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from "redux"
-import { showLoginModal } from '../store/actionCreators';
+import { addUserDetails, showLoginModal } from '../store/actionCreators';
+import { rules } from '../utils/rules';
 
 
 export default function SingUp(): JSX.Element {
@@ -14,18 +14,7 @@ export default function SingUp(): JSX.Element {
 
     const { isLoginModalOpen } = state
 
-    console.log('SingUp', isLoginModalOpen);
-
-    // const onFinish = (values) => {
-    //     console.log('Success:', values);
-    // };
-    // const onFinishLogin = (values) => {
-    //     console.log('Success onFinishLogin:', values);
-    // };
-
-
     useEffect(() => {
-
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
         const container = document.getElementById('container');
@@ -57,9 +46,12 @@ export default function SingUp(): JSX.Element {
     }
 
     const onFinishSingIn = (values: LOGIN_DATA) => {
-        console.log(values);
+        console.log('LOGIN_DATA:', values);
     }
 
+    const onFinishSingUp = (values: SINGUP_DATA) => {
+        dispatch(addUserDetails(values))
+    };
     return (
         <div className='main-login-wraper'>
             <Modal closable={false} open={isLoginModalOpen} onCancel={() => dispatch(showLoginModal(!isLoginModalOpen))} centered width={'768px'} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
@@ -67,67 +59,35 @@ export default function SingUp(): JSX.Element {
                     <div className="form-container sign-up-container" id='signUpContainer'>
                         <Form
                             name="basic"
-                            // onFinish={onFinishSingUp}
+                            onFinish={onFinishSingUp}
                             autoComplete="off"
                         >
                             <div className='form-container-data form-margin'>
                                 <h1>Create Account</h1>
                                 <Form.Item
-                                    name="username"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your username!',
-                                        },
-                                    ]}
+                                    name="userName"
+                                    rules={rules.userName}
                                 >
                                     <Input placeholder='Username' />
                                 </Form.Item>
 
                                 <Form.Item
-                                    name="moNumber"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your mobile Number!',
-                                        },
-                                        {
-                                            pattern: /^[0-9]{10}$/,
-                                            message: 'Please input your valid mobile Number!',
-                                        }
-                                    ]}
+                                    name="mobileNumber"
+                                    rules={rules.moNumber}
                                 >
                                     <Input placeholder='Mobile No.' />
                                 </Form.Item>
 
                                 <Form.Item
-                                    name="email"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your Email!',
-                                        },
-                                        {
-                                            pattern: /^[A-Za-z0-9._]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,3}$/,
-                                            message: 'Please input Valid Email!'
-                                        },
-                                    ]}
+                                    name="userEmail"
+                                    rules={rules.email}
                                 >
                                     <Input placeholder='User Email' />
                                 </Form.Item>
 
                                 <Form.Item
-                                    name="password"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your password!',
-                                        },
-                                        {
-                                            min: 8,
-                                            message: 'Please input your valid Password!',
-                                        },
-                                    ]}
+                                    name="userPassword"
+                                    rules={rules.password}
                                 >
                                     <Input.Password placeholder='Password' />
                                 </Form.Item>
@@ -140,7 +100,7 @@ export default function SingUp(): JSX.Element {
                                     </div>
                                 </Form.Item>
                                 <Form.Item>
-                                    <div className='login-create-acc' id='loginAlready'><a href="#" onClick={clickLoginAcc}>Login ?</a></div>
+                                    <div className='login-create-acc' id='loginAlready'><a href="/" onClick={clickLoginAcc}>Login ?</a></div>
                                 </Form.Item>
                             </div>
                         </Form>
@@ -154,33 +114,15 @@ export default function SingUp(): JSX.Element {
                             <div className='form-container-data'>
                                 <h1>Sign In</h1>
                                 <Form.Item
-                                    name="email"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your Email!',
-                                        },
-                                        {
-                                            pattern: /^[A-Za-z0-9._]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,3}$/,
-                                            message: 'Please input Valid Email!'
-                                        },
-                                    ]}
+                                    name="userEmail"
+                                    rules={rules.email}
                                 >
                                     <Input placeholder='User Email' />
                                 </Form.Item>
 
                                 <Form.Item
-                                    name="password"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your password!',
-                                        },
-                                        {
-                                            min: 8,
-                                            message: 'Please input your valid Password!',
-                                        },
-                                    ]}
+                                    name="userPassword"
+                                    rules={rules.password}
                                 >
                                     <Input.Password placeholder='Password' />
                                 </Form.Item>
@@ -195,7 +137,7 @@ export default function SingUp(): JSX.Element {
                                     </div>
                                 </Form.Item>
                                 <Form.Item>
-                                    <div className='login-create-acc' id='createAcc'><a href="#" onClick={clickCreateAcc}>Create Account?</a></div>
+                                    <div className='login-create-acc' id='createAcc'><a href="/" onClick={clickCreateAcc}>Create Account?</a></div>
                                 </Form.Item>
                             </div>
                         </Form>

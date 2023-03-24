@@ -22,10 +22,32 @@ export interface PUBLICE_ROUTE {
 }
 
 export interface LOGIN_DATA {
-    email:string,
-    password:string,
+    userEmail: string,
+    userPassword: string,
 }
-// export interface SINGUP_DATA {
-//     email:string,
-//     password:string,
-// }
+
+export interface SINGUP_DATA {
+    userName: string,
+    mobileNumber: string,
+    userEmail: string,
+    userPassword: string,
+}
+
+export interface I_SIGNUP_REQUEST_DATA {
+    userId: string,   // Unique
+    userName: string,
+    userEmail: string,
+    userProfile: string,
+    mobileNumber: number,
+    socketId: string,
+    token: string,
+    entryFee: number,
+    chips: number,
+}
+
+export interface BOARD {
+    x: number;
+    y: number;
+    flag: boolean;
+    num: number;
+}

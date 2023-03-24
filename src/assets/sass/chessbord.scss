@@ -6,9 +6,12 @@
     font-family: 'Baloo 2', cursive;
 }
 
+body {
+    background-color: black;
+}
 
 .App {
-    height: 100vh;
+    height: 100%;
     background-color: black;
     display: grid;
     place-content: center;
@@ -21,25 +24,35 @@
     grid-template-rows: repeat(8, 100px);
     height: 800px;
     width: 800px;
-    border: 5px solid gray;
-    background-color: pink;
-    color: red;
+    background-image: url('../image/chessbordBG.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: none;
+
+    // border: 5px solid whitesmoke;
 
     .chess_tile {
 
-        border: 1px solid white;
+        border: 1px solid black;
         height: 100px;
         width: 100px;
+        display: grid;
+        place-content: center;
+
+        img {
+            height: 70px;
+            width: 70px;
+        }
 
     }
 
     .white_tile {
-        background-color: #DEB886;
+        background-color: #157266c9
         // background-color: white;
     }
 
     .black_tile {
-        background-color: #5A3828;
+        background-color: #275246d9;
         // background-color: black;
     }
 }

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Dispatch } from "redux"
 import { addArticle, removeArticle } from "./store/actionCreators";
 import { useDispatch } from "react-redux";
+import Layout from "./components/Layout";
 
 export default function App() {
 
@@ -28,37 +29,18 @@ export default function App() {
       console.log("connected", socket.connected, "ID", socket.id); // x8WIv7-mJelg7on_ALbx
     });
 
-    const data: any = {
-      "en": "SIGN_UP",
-      "data": {
-        "userId": "749dac8da1910b36940bce49",
-        "userName": "sonu_patel",
-        "userEmail": "sonu@gmail.com",
-        "userProfile": "ss3.jpg",
-        "mobileNumber": 8200818613,
-        "token": "abc2",
-        "entryFee": 100,
-        "chips": 50000
-      }
-    }
-
-    socket.emit("SIGN_UP", data);
-    socket.on("SIGN_UP", (data) => console.log("SIGN_UP" + data));
     socket.on("SELECT_TABLE", (data) => console.log("SELECT_TABLE" + data));
 
-  }, [])
+  }, [socket])
 
 
 
-  const saveArticle = (article: IArticle) => dispatch(removeArticle(article))
-  const saveArticle123 = () => {
-    dispatch(addArticle(first))
-  }
-
-
-  console.log('state',state);
+  // const saveArticle = (article: IArticle) => dispatch(removeArticle(article))
+  // const saveArticle123 = () => dispatch(addArticle(first))
 
   return (
-    <RoutesComponent />
+    <Layout>
+      <RoutesComponent />
+    </Layout>
   );
 }

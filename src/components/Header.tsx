@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from "redux"
 import { showLoginModal } from '../store/actionCreators';
 import SingUp from '../views/SingUp';
+import { useNavigate } from 'react-router';
 
 const Header = () => {
 
     const dispatch: Dispatch<any> = useDispatch()
+    const navigate = useNavigate()
     const state: ArticleState = useSelector((state: ArticleState) => state)
 
-    const { isLoginModalOpen } = state
+    const { isLoginModalOpen, user } = state
 
     return (
         <>
@@ -37,7 +39,7 @@ const Header = () => {
                         <div className="page-header-contant">
                             <div className='main-tag-row'>
                                 <div className='header-first-artical'>
-                                    <a href="/" className="logo">
+                                    <a onClick={() => navigate("/")} className="logo">
                                         <img src={Image.logo} alt="Logo" />
                                     </a>
                                 </div>
@@ -63,6 +65,10 @@ const Header = () => {
                                         </div>
                                         <div className='icons-chees'>
                                             <ul>
+                                                <li><h3>
+                                                    {user && user.userName}
+                                                </h3>
+                                                </li>
                                                 <li onClick={() => dispatch(showLoginModal(!isLoginModalOpen))}>
                                                     <img src={Image.userIcons} />
                                                 </li>
