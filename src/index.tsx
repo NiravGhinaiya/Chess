@@ -14,11 +14,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Suspense fallback={<Spinner />}>
-        <App />
-      </Suspense>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Suspense fallback={<Spinner />}>
+          <App />
+        </Suspense>
+      </BrowserRouter>
   </Provider>
 );
 
