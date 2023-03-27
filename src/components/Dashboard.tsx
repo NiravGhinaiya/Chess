@@ -1,30 +1,50 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from 'react-router';
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Pagination } from "swiper";
 import { Image } from '../assets/image';
-import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { socket } from '../socket/socket';
+import { SocketOnEvent } from '../socket';
+import { ArticleState } from '../store/type';
 
 const Dashboard = () => {
 
-    const backGroundImage = [Image.slide01, Image.slide02, Image.slide03]
     const navigate = useNavigate()
+    const state: ArticleState = useSelector((state: ArticleState) => state)
+    const backGroundImage = [Image.slide01, Image.slide02, Image.slide03]
 
     const [toggle, setToggle] = useState(false)
+    const { user } = state
 
 
     const clickSettingOpenClose = () => {
         setToggle(!toggle)
     }
 
+    const startGame = () => {
+
+        if (user) {
+            const data = {
+                en: 'SIGN_UP',
+                data: { ...user }
+            }
+            socket.emit('SIGN_UP', data)
+            
+        navigate("/chessbord")
+        }
+    }
 
     const handleClick = (data: string) => {
         document.documentElement.style.setProperty('--chessapp-primer-color', data);
         document.documentElement.style.setProperty('--swiper-theme-color', data);
         document.documentElement.style.setProperty('--swiper-pagination-bullet-inactive-color', data);
     }
+
+    console.log('state', state);
 
     return (
         <div className='container'>
@@ -70,7 +90,7 @@ const Dashboard = () => {
                                             </div>
 
                                             <div className="many-buttons intro_layer animated fadeIn" data-animation="fadeIn" style={{ visibility: "hidden" }}>
-                                                <a onClick={() => navigate("/chessbord")} className="btn btn-maincolor medium-btn">start now</a>
+                                                <a onClick={() => startGame()} className="btn btn-maincolor medium-btn">start now</a>
                                                 <a href="/" className="btn btn-outline-darkgrey medium-btn">learn more</a>
                                             </div>
                                         </div>

@@ -54,7 +54,7 @@ const Cursor = ({ children }: any) => {
                     x: "-50%",
                     y: "-50%",
                 }}
-                transition={{ ease: "linear", duration: 0.10 }}
+                transition={{ ease: "linear", duration: 0.08 }}
             />
             {children}
             <PointerStyles

@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes"
 import { v4 as uuid } from 'uuid';
+import { ArticleState } from "./type";
 
 const initialState: ArticleState = {
     articles: [
@@ -17,7 +18,43 @@ const initialState: ArticleState = {
         },
     ],
     isLoginModalOpen: false,
-    user: null,
+    user: {
+        "userId": "",
+        "userName": "",
+        "userEmail": "",
+        "userProfile": "",
+        "mobileNumber": 0,
+        "socketId": "",
+        "token": "",
+        "chips": 0,
+        "entryFee": 0,
+        "gameWon": 0,
+        "gameLoss": 0,
+        "totalGamePlay": 0,
+        "WinStreak": 0,
+        "version": "",
+        "isRobot": "FALSE",
+        "isReMatch": false,
+        "tableId": "",
+        "createdAt": 0,
+        "modifiedAt": 0
+    },
+    playerList: [{
+        "userId": '',
+        "userName": '',
+        "seatIndex": 0,
+        "color": '',
+    }],
+    board:[{
+        "piecetype": 0,
+        "teamcolor": 0,
+        "PieceID": 0,
+        "x": 0,
+        "y": 0
+    }],
+    // position:{
+
+    // }
 }
 
 const showLoginModalHandler = (state: ArticleState, action: any) => {
@@ -37,39 +74,39 @@ const addUserDetailsHandler = (state: ArticleState, action: any) => {
         chips: 50000,
         userProfile: 'asd.jpg',
     }
-    return { ...state, user, isLoginModalOpen: !state.isLoginModalOpen}
+
+    sessionStorage.setItem('sessionStorage', JSON.stringify(user))
+    return { ...state, user: { ...state.user, ...user }, isLoginModalOpen: !state.isLoginModalOpen }
 }
 
+const socketSignUpHandler = (state: ArticleState, action: any) => {
+    let { data } = action;
+    data = JSON.parse(data);
+    return { ...state, user: { ...state.user, ...data.data } }
+}
+
+const socketSelectTableHandler = (state: ArticleState, action: any) => {
+    let { payload } = action;
+
+    const { playerList, board, position } = payload.data;
+
+    return { ...state, playerList, board }
+}
+
+// * Reducer ******************* Reducer ******************* Reducer ******************* Reducer
+
+const sessionStorageState = JSON.parse(sessionStorage?.getItem('sessionStorage') || '{}')
+
 const reducer = (
-    state: ArticleState = initialState,
+    state: ArticleState = sessionStorage.getItem('sessionStorage') ? { ...initialState, user: sessionStorageState } : initialState,
     action: any
 ): ArticleState => {
     switch (action.type) {
 
-        case actionTypes.ADD_ARTICLE:
-
-            const newArticle: IArticle = {
-                id: Math.random(), // not really unique
-                title: action.article.title,
-                body: action.article.body,
-            }
-            return {
-                ...state,
-                articles: state.articles.concat(newArticle),
-            }
-
-        case actionTypes.REMOVE_ARTICLE:
-
-            const updatedArticles: IArticle[] = state.articles.filter(
-                article => article.id !== action.article.id
-            )
-            return {
-                ...state,
-                articles: updatedArticles,
-            }
-
         case actionTypes.SHOW_LOGIN_MODAL: return showLoginModalHandler(state, action);
         case actionTypes.ADD_USER_DETAILS: return addUserDetailsHandler(state, action);
+        case actionTypes.SOCKET_SINGUP: return socketSignUpHandler(state, action);
+        case actionTypes.SOCKET_SELECT_TABLE: return socketSelectTableHandler(state, action);
 
     }
     return state;
