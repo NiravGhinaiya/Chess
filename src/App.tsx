@@ -3,16 +3,14 @@ import RoutesComponent from "./routes/RoutesComponent";
 import { socket } from "./socket/socket";
 import { useSelector } from "react-redux";
 import { Dispatch } from "redux"
-import { addArticle, removeArticle } from "./store/actionCreators";
 import { useDispatch } from "react-redux";
 import Layout from "./components/Layout";
+import { SocketOnEvent } from "./socket";
+import Spinner from "./components/Spinner";
 
 export default function App() {
 
   const dispatch: Dispatch<any> = useDispatch()
-  const [first, setFirst] = useState<number>(0)
-  const state: readonly IArticle[] = useSelector((state: ArticleState) => state.articles)
-
 
   useEffect(() => {
 
@@ -29,14 +27,10 @@ export default function App() {
       console.log("connected", socket.connected, "ID", socket.id); // x8WIv7-mJelg7on_ALbx
     });
 
-    socket.on("SELECT_TABLE", (data) => console.log("SELECT_TABLE" + data));
+    SocketOnEvent(dispatch)
 
   }, [socket])
 
-
-
-  // const saveArticle = (article: IArticle) => dispatch(removeArticle(article))
-  // const saveArticle123 = () => dispatch(addArticle(first))
 
   return (
     <Layout>

@@ -5,6 +5,7 @@ import { Dispatch } from "redux"
 import { showLoginModal } from '../store/actionCreators';
 import SingUp from '../views/SingUp';
 import { useNavigate } from 'react-router';
+import { ArticleState } from '../store/type';
 
 const Header = () => {
 

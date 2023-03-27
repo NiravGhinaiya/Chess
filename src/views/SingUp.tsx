@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from "redux"
 import { addUserDetails, showLoginModal } from '../store/actionCreators';
 import { rules } from '../utils/rules';
+import { ArticleState } from '../store/type';
 
 
 export default function SingUp(): JSX.Element {

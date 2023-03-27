@@ -1,12 +1,12 @@
 import { lazy } from 'react';
-import { PUBLICE_ROUTE_LIST } from '../../interfaces/interFace';
+import { ROUTE_LIST } from '../../interfaces/interFace';
 
 const Dashboard = lazy(() => import('../../components/Dashboard'));
 const Error404 = lazy(() => import('../../views/Error404'));
 const SingUp = lazy(() => import('../../views/SingUp'));
 const Chessbord = lazy(() => import('../../components/Chessbord'));
 
-export const PublicRouteList : PUBLICE_ROUTE_LIST[] = [
+export const PublicRouteList : ROUTE_LIST[] = [
 
     // Home
     { path: "/", element: Dashboard, restricted: false, title: "Dashbord" },
@@ -15,6 +15,11 @@ export const PublicRouteList : PUBLICE_ROUTE_LIST[] = [
     { path: "*", element: Error404, restricted: false, title: "404" },
     
     // { path: "/singup", element: SingUp, restricted: false, title: "SingUp" },
+    
+]
+
+export const PrivateRouteList : ROUTE_LIST[] = [
+
     { path: "/chessbord", element: Chessbord, restricted: false, title: "Chessbord" },
     
 ]
